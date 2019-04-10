@@ -18,7 +18,6 @@
                         <button 
                             type="button" 
                             class="btn btn-success"
-                            
                             @click="buyStock"
                             :disabled="insufficientFunds ||quantity <= 0"
                             >{{insufficientFunds ? 'no funds':'Buy'}}</button>  
@@ -70,7 +69,7 @@
 
 <style scoped>
     .danger {
-        border: 2px solid red;
+        border: 1px solid red;
     }
 </style>
 

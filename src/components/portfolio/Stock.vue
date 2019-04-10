@@ -9,6 +9,7 @@
                     <div class="mr-left p-4">
                         <input  type="number" 
                                 class="form-control " 
+                                :class="{danger: insufficientQuantity}"
                                 placeholder="Quantity"
                                 v-model="quantity"
                                 >
@@ -18,12 +19,12 @@
                             type="button" 
                             class="btn btn-success"
                             @click="sellStock"
-                            :disabled="quantity <= 0"
-                            >Sell</button>        
+                            :disabled="insufficientQuantity || quantity <= 0"
+                            >{{ insufficientQuantity ? 'Not stocks' : 'Sell'}}</button>        
                     </div>
                 </div> 
-                stock-portfolio{{stock}}
-
+                <!-- stock-portfolio{{stock}} -->
+                stock-props{{stock.quantity}}
                 
             </div>
         </div>
@@ -53,10 +54,21 @@
                     quantity: this.quantity
                 };
                 console.log('sell-portfolio-oreder', order);
-                this.placeSellOrder(order);
-                
+                this.placeSellOrder(order); 
                 this.quantity = 0;
+            }
+        },
+        computed: {
+   
+            insufficientQuantity(){
+                return this.quantity > this.stock.quantity;
             }
         }
     }    
 </script>
+
+<style scoped>
+    .danger {
+        border: 1px solid red;
+    }
+</style>
