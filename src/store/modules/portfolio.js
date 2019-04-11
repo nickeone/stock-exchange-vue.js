@@ -38,7 +38,7 @@ const mutations = {
         state.funds = data.funds;
         console.log('state-stocks', state.stocks);
         console.log('state-data-portfolio', data);
-        state.stocks = data.portfolio;
+        state.stocks = data.portfolio ? data.portfolio : [];
         console.log('state-data-portfolio', state.savedStocks);
     }
     // 'SAVE_DATA' (state){
