@@ -25,7 +25,7 @@
                             
                     </div>
                 </div> 
-                {{stock}}
+<!--                {{stock}}-->
 
                 
             </div>
